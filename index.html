@@ -256,7 +256,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .filter-drawer-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid var(--stone);position:sticky;top:0;background:var(--white)}
 .filter-drawer-title{font-size:12px;letter-spacing:0.12em;color:var(--stone-dark)}
 .filter-drawer-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--stone-dark)}
-.filter-fab{display:none;position:fixed;bottom:80px;left:16px;z-index:300;background:var(--white);border:0.5px solid var(--stone-mid);padding:10px 16px;font-size:11px;letter-spacing:0.1em;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.filter-fab{display:none}
 
 @media(max-width:768px){
   /* NAV */
@@ -288,7 +288,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
   .app-layout{grid-template-columns:1fr}
   .sidebar{display:none}
   .content-area{padding:20px 16px}
-  .filter-fab{display:block}
+  #inline-filter-btn{display:flex !important}
 
   /* PRODUCT GRID - 2 columns */
   .product-grid{grid-template-columns:repeat(2,1fr) !important}
@@ -388,8 +388,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
   <div style="padding:0 20px 80px" id="filter-drawer-content"></div>
 </div>
 
-<!-- FILTER FAB -->
-<button class="filter-fab" onclick="openFilterDrawer()">⊟ Filtros</button>
 
 <!-- HOME VIEW -->
 <div class="view active" id="view-home">
@@ -611,6 +609,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
         </div>
       </div>
+
+      <!-- MOBILE FILTER BUTTON - only shows on mobile via CSS -->
+      <button id="inline-filter-btn" onclick="openFilterDrawer()" style="display:none;align-items:center;gap:8px;background:var(--white);border:0.5px solid var(--stone-mid);padding:9px 16px;font-size:11px;letter-spacing:0.08em;cursor:pointer;font-family:Inter,sans-serif;margin-bottom:16px;width:100%">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+        Filtrar peças
+      </button>
 
       <div id="create-look-mode-bar" style="display:none;background:var(--off-white);border:0.5px solid var(--stone);padding:12px 20px;margin-bottom:20px;font-size:12px;color:var(--ink-muted)">
         Modo <strong>Criar Look</strong> ativo — clique nas peças para selecioná-las
