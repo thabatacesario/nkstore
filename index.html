@@ -40,11 +40,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .view.active{display:block}
 
 /* HOME */
-.home-hero{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--stone);margin:0;height:85vh;min-height:600px}
-.hero-panel{background:var(--black);position:relative;overflow:hidden;cursor:pointer}
+.home-hero{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--black);margin:0;height:85vh;min-height:600px}
+.hero-panel{background:var(--black);position:relative;overflow:hidden;cursor:pointer;isolation:isolate}
 .hero-panel:hover .hero-overlay{opacity:1}
 .hero-panel:hover .hero-bg-img{transform:scale(1.05)}
-.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center center;background:var(--off-white);transition:transform 0.6s ease;filter:grayscale(10%)}
+.hero-bg-img{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);object-fit:cover;object-position:center 15%;transition:transform 0.6s ease;filter:grayscale(10%)}
 .hero-panel-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:40px 32px;text-align:center;z-index:3}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.42);transition:opacity 0.3s;z-index:2}
 .hero-title{font-family:'EB Garamond',serif;font-size:30px;color:var(--white);font-weight:400;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,0.4)}
@@ -270,8 +270,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
   .topbar{font-size:10px;padding:8px}
 
   /* HOME HERO - stack vertically */
-  .home-hero{grid-template-columns:1fr;height:auto}
-  .hero-panel{height:70vw;min-height:220px}
+  .home-hero{grid-template-columns:1fr;height:auto;background:var(--black);gap:2px}
+  .hero-panel{height:105vw;min-height:320px}
   .hero-title{font-size:22px}
   .hero-sub{font-size:10px}
   .hero-cta{padding:9px 20px;font-size:10px;margin-top:12px}
@@ -335,7 +335,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 <div class="topbar">nk vision — acesso exclusivo</div>
 
 <nav>
-  <div class="nav-logo" style="font-size:22px;letter-spacing:0.04em">nk vision</div>
+  <div class="nav-logo" style="font-size:22px;letter-spacing:0.04em;cursor:pointer" onclick="showView('home')">nk vision</div>
   <div class="nav-links">
     <span id="nav-home" onclick="showView('home')">início</span>
     <span id="nav-pecas" onclick="showView('pecas')">peças</span>
@@ -358,7 +358,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 <div class="drawer-overlay" id="drawer-overlay" onclick="closeMobileNav()"></div>
 <div class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-header">
-    <div class="mobile-nav-logo">nk vision</div>
+    <div class="mobile-nav-logo" style="cursor:pointer" onclick="closeMobileNav();showView('home')">nk vision</div>
     <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
   </div>
   <div class="mobile-nav-links">
