@@ -227,12 +227,106 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
 .look-select-check{width:16px;height:16px;border:1px solid var(--stone-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;flex-shrink:0}
 .look-select-check.checked{background:var(--black);border-color:var(--black);color:var(--white);font-size:10px}
 
-/* RESPONSIVE tweaks */
-@media(max-width:900px){
+/* ═══════════════════════════════
+   MOBILE / RESPONSIVE
+═══════════════════════════════ */
+
+/* Hamburger button */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--black);transition:all 0.3s}
+
+/* Mobile drawer overlay */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:400;display:none;opacity:0;transition:opacity 0.3s}
+.drawer-overlay.open{display:block;opacity:1}
+
+/* Mobile nav drawer */
+.mobile-nav{position:fixed;top:0;right:0;width:80%;max-width:300px;height:100%;background:var(--white);z-index:500;transform:translateX(100%);transition:transform 0.3s ease;padding:0;overflow-y:auto;display:flex;flex-direction:column}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:0.5px solid var(--stone)}
+.mobile-nav-logo{font-family:'EB Garamond',serif;font-size:20px}
+.mobile-nav-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--stone-dark);line-height:1}
+.mobile-nav-links{padding:24px;display:flex;flex-direction:column;gap:0}
+.mobile-nav-links a{font-size:15px;letter-spacing:0.08em;color:var(--ink);padding:16px 0;border-bottom:0.5px solid var(--stone);cursor:pointer;display:block;font-family:'Inter',sans-serif}
+.mobile-nav-links a:last-child{border-bottom:none}
+.mobile-nav-client{padding:16px 24px;margin-top:auto;border-top:0.5px solid var(--stone);font-size:11px;color:var(--stone-dark)}
+
+/* Mobile filter drawer */
+.filter-drawer{position:fixed;bottom:0;left:0;right:0;background:var(--white);z-index:400;transform:translateY(100%);transition:transform 0.3s ease;max-height:80vh;overflow-y:auto;border-top:0.5px solid var(--stone)}
+.filter-drawer.open{transform:translateY(0)}
+.filter-drawer-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid var(--stone);position:sticky;top:0;background:var(--white)}
+.filter-drawer-title{font-size:12px;letter-spacing:0.12em;color:var(--stone-dark)}
+.filter-drawer-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--stone-dark)}
+.filter-fab{display:none;position:fixed;bottom:80px;left:16px;z-index:300;background:var(--white);border:0.5px solid var(--stone-mid);padding:10px 16px;font-size:11px;letter-spacing:0.1em;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+
+@media(max-width:768px){
+  /* NAV */
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-right .search-bar{width:150px}
+  #nav-client-name{display:none}
+
+  /* TOPBAR */
+  .topbar{font-size:10px;padding:8px}
+
+  /* HOME HERO - stack vertically */
+  .home-hero{grid-template-columns:1fr;height:auto}
+  .hero-panel{height:70vw;min-height:220px}
+  .hero-title{font-size:22px}
+  .hero-sub{font-size:10px}
+  .hero-cta{padding:9px 20px;font-size:10px;margin-top:12px}
+
+  /* HOME sections */
+  #view-home > div:last-child{grid-template-columns:1fr;gap:32px;padding:32px 20px}
+
+  /* APP LAYOUT - no sidebar */
   .app-layout{grid-template-columns:1fr}
   .sidebar{display:none}
-  nav{padding:16px 24px}
-  .content-area{padding:24px}
+  .content-area{padding:20px 16px}
+  .filter-fab{display:block}
+
+  /* PRODUCT GRID - 2 columns */
+  .product-grid{grid-template-columns:repeat(2,1fr) !important}
+
+  /* LOOKS GRID */
+  .looks-grid{grid-template-columns:repeat(2,1fr)}
+
+  /* TABS - scrollable */
+  .tabs{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .tab{white-space:nowrap;font-size:11px;margin-right:20px}
+
+  /* SEARCH BAR */
+  .search-bar{width:100% !important}
+  .content-header{flex-direction:column;align-items:flex-start;gap:12px}
+
+  /* PRODUCT INFO */
+  .product-name{font-size:10px}
+  .product-price{font-size:10px}
+
+  /* MODAL */
+  .modal{width:calc(100vw - 32px) !important;padding:24px 20px;max-height:90vh;overflow-y:auto}
+  .modal-overlay{align-items:flex-end;padding-bottom:0}
+  .modal{border-radius:0}
+
+  /* BOTTOM BAR */
+  .bottom-bar{padding:12px 16px;flex-wrap:wrap;gap:8px}
+  .bottom-bar-actions{flex-wrap:wrap;gap:8px}
+  .bottom-btn{padding:9px 16px;font-size:10px}
+
+  /* LOOKS - hide create card on mobile */
+  .create-look-card{min-height:200px}
+
+  /* CLIENT VIEW */
+  #sub-clientes-lista{padding:20px 16px}
+  #sub-cliente-looks{padding:20px 16px}
+
+  /* FOOTER */
+  footer{padding:40px 20px !important;margin-top:40px !important}
+  footer p{font-size:15px !important}
+
+  /* LOJA BUTTONS - wrap */
+  #loja-selector{flex-wrap:wrap;gap:8px}
+  .loja-btn{font-size:10px;padding:5px 10px}
 }
 </style>
 </head>
@@ -248,14 +342,49 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
     <span id="nav-looks" onclick="showView('looks')">looks</span>
     <span id="nav-clientes" onclick="showView('clientes')">clientes</span>
   </div>
-  <div class="nav-right" style="display:flex;align-items:center;gap:20px">
+  <div class="nav-right" style="display:flex;align-items:center;gap:16px">
     <div class="search-bar" style="width:220px" id="nav-search-bar">
       <input type="text" placeholder="Buscar..." id="nav-search-input" oninput="navSearch(this.value)" onfocus="showView('pecas')" style="font-size:12px">
       <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
     </div>
     <span style="font-size:11px;color:var(--stone-dark);letter-spacing:0.06em;white-space:nowrap" id="nav-client-name"></span>
+    <button class="nav-hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-header">
+    <div class="mobile-nav-logo">nk vision</div>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a onclick="closeMobileNav();showView('home')">início</a>
+    <a onclick="closeMobileNav();showView('pecas')">peças</a>
+    <a onclick="closeMobileNav();showView('looks')">looks</a>
+    <a onclick="closeMobileNav();showView('clientes')">clientes</a>
+  </div>
+  <div class="mobile-nav-client" id="mobile-nav-client" style="display:none">
+    <span style="letter-spacing:0.1em;color:var(--stone-dark)">CLIENTE ATIVA</span><br>
+    <span id="mobile-client-name" style="font-size:13px;color:var(--ink);font-weight:500"></span>
+  </div>
+</div>
+
+<!-- MOBILE FILTER DRAWER -->
+<div class="drawer-overlay" id="filter-overlay" onclick="closeFilterDrawer()"></div>
+<div class="filter-drawer" id="filter-drawer">
+  <div class="filter-drawer-header">
+    <span class="filter-drawer-title">FILTROS</span>
+    <button class="filter-drawer-close" onclick="closeFilterDrawer()">×</button>
+  </div>
+  <div style="padding:0 20px 80px" id="filter-drawer-content"></div>
+</div>
+
+<!-- FILTER FAB -->
+<button class="filter-fab" onclick="openFilterDrawer()">⊟ Filtros</button>
 
 <!-- HOME VIEW -->
 <div class="view active" id="view-home">
@@ -1186,6 +1315,44 @@ function openLookBuilder(id){
 renderProducts();
 renderLooks();
 renderClients();
+
+// ── MOBILE NAV ──
+function openMobileNav(){
+  document.getElementById('mobile-nav').classList.add('open');
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMobileNav(){
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── MOBILE FILTER DRAWER ──
+function openFilterDrawer(){
+  // Clone sidebar content into drawer
+  const sidebar = document.querySelector('.sidebar');
+  const drawerContent = document.getElementById('filter-drawer-content');
+  if(sidebar) drawerContent.innerHTML = sidebar.innerHTML;
+  document.getElementById('filter-drawer').classList.add('open');
+  document.getElementById('filter-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeFilterDrawer(){
+  document.getElementById('filter-drawer').classList.remove('open');
+  document.getElementById('filter-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// Update mobile client name when client is selected
+const _origSelectClient = selectClient;
+function selectClient(name){
+  _origSelectClient(name);
+  const el = document.getElementById('mobile-client-name');
+  const bar = document.getElementById('mobile-nav-client');
+  if(el) el.textContent = name;
+  if(bar) bar.style.display='block';
+}
 
 // Close modals on overlay click
 document.querySelectorAll('.modal-overlay').forEach(el=>{
