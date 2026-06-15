@@ -317,14 +317,16 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
   #inline-filter-btn{display:flex !important}
 
   /* PRODUCT GRID - 2 columns */
-  .product-grid{grid-template-columns:repeat(2,1fr) !important}
+  .product-grid{grid-template-columns:repeat(2,1fr) !important;border-left:none !important;margin-left:-16px;margin-right:-16px;width:calc(100% + 32px)}
+  .product-card{border-left:0.5px solid var(--stone)}
 
   /* LOOKS GRID */
   .looks-grid{grid-template-columns:repeat(2,1fr)}
 
   /* TABS - scrollable */
-  .tabs{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:2px}
-  .tab{white-space:nowrap;font-size:11px;margin-right:20px}
+  .tabs{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:4px;-ms-overflow-style:none;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{white-space:nowrap;font-size:18px !important;margin-right:16px}
 
   /* SEARCH BAR */
   .search-bar{width:100% !important}
@@ -338,8 +340,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 4
   .tab{font-size:21px}
   .filter-item{font-size:21px}
   .sidebar-label{font-size:18px}
-  .client-row-name{font-size:22px}
-  .client-row-meta{font-size:20px}
+  .client-row-name{font-size:16px}
+  .client-row-meta{font-size:13px;line-height:1.5}
+  /* CLIENT ROW - mobile layout fix */
+  .client-row{grid-template-columns:1fr !important;gap:0 !important;padding:14px 16px !important}
+  .client-row > div:nth-child(2){display:none}
+  .client-row > div:nth-child(3){display:none}
   .look-name{font-size:25px}
   .look-meta{font-size:20px}
   .look-price{font-size:20px}
